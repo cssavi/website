@@ -17,3 +17,14 @@ const addWord = (text, index) => subtitle.appendChild(createWord(text, index));
 const createSubtitle = text => text.split(" ").map(addWord);
 
 createSubtitle("But in a much more real sense, I have no idea what I'm doing.");
+
+const blob = document.getElementById("blob");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 3000, fill: "forwards" });
+}
