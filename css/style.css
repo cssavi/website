@@ -18,6 +18,19 @@ body {
   overflow: hidden;
 }
 
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+  
+  50% {
+    scale: 1 1.5;
+  }
+  
+  to {
+    rotate: 360deg;
+  }
+}
 
 #blob {
   background-color: white;
@@ -31,6 +44,15 @@ body {
   background: linear-gradient(115deg, rgb(8, 207, 44), rgb(11, 241, 222),rgb(238, 45, 209));
   animation: rotate 15s infinite;
   opacity: 0.8;
+  filter: blur(10vmax);
+}
+
+#blur {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  backdrop-filter: blur(12vmax);
 }
 
 .card {
