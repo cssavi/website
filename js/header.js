@@ -1,3 +1,12 @@
+const menu = document.getElementById("menu");
+
+Array.from(document.getElementsByClassName("menu-item"))
+  .forEach((item, index) => {
+    item.onmouseover = () => {
+      menu.dataset.activeIndex = index;
+    }
+});
+
 const subtitle = document.getElementsByClassName("card-subtitle")[0];
 
 const createWord = (text, index) => {
@@ -20,11 +29,39 @@ createSubtitle("But in a much more real sense, I have no idea what I'm doing.");
 
 const blob = document.getElementById("blob");
 
-window.onpointermove = event => { 
-  const { clientX, clientY } = event;
+const updateBlobPosition = (clientX, clientY, scrollY) => {
+  // blob.animate(
+  //   {
+  //     left: `${clientX}px`,
+  //     top: `${clientY + scrollY}px`,
+  //   },
+  //   { duration: 500, fill: "forwards" }
+  // );
+
+    const blobWidth = blob.clientWidth;
+    const blobHeight = blob.clientHeight;
   
-  blob.animate({
-    left: `${clientX}px`,
-    top: `${clientY}px`
-  }, { duration: 3000, fill: "forwards" });
-}
+    blob.style.left = `${clientX - blobWidth / 2}px`; // Subtract half the blob width
+    blob.style.top = `${clientY + scrollY - blobHeight / 2}px`; // Subtract half the blob height
+
+  
+};
+
+window.addEventListener("mousemove", (event) => {
+  const { clientX, clientY } = event;
+  const scrollY = window.scrollY || window.pageYOffset;
+  updateBlobPosition(clientX, clientY, scrollY);
+});
+
+window.addEventListener("scroll", () => {
+  const { clientX, clientY } = lastMousePosition;
+  const scrollY = window.scrollY || window.pageYOffset;
+  updateBlobPosition(clientX, clientY, scrollY);
+});
+
+let lastMousePosition = { clientX: 0, clientY: 0 };
+
+window.addEventListener("mousemove", (event) => {
+  const { clientX, clientY } = event;
+  lastMousePosition = { clientX, clientY };
+});
