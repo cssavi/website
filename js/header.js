@@ -21,6 +21,15 @@ const createWord = (text, index) => {
   return word;
 }
 
+const aboutLink = document.getElementById("about-link");
+const cardSection = document.getElementById("card-section");
+
+aboutLink.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  cardSection.scrollIntoView({ behavior: "smooth" });
+});
+
 const addWord = (text, index) => subtitle.appendChild(createWord(text, index));
 
 const createSubtitle = text => text.split(" ").map(addWord);
@@ -30,21 +39,11 @@ createSubtitle("But in a much more real sense, I have no idea what I'm doing.");
 const blob = document.getElementById("blob");
 
 const updateBlobPosition = (clientX, clientY, scrollY) => {
-  // blob.animate(
-  //   {
-  //     left: `${clientX}px`,
-  //     top: `${clientY + scrollY}px`,
-  //   },
-  //   { duration: 500, fill: "forwards" }
-  // );
+  const blobWidth = blob.clientWidth;
+  const blobHeight = blob.clientHeight;
 
-    const blobWidth = blob.clientWidth;
-    const blobHeight = blob.clientHeight;
-  
-    blob.style.left = `${clientX - blobWidth / 2}px`; // Subtract half the blob width
-    blob.style.top = `${clientY + scrollY - blobHeight / 2}px`; // Subtract half the blob height
-
-  
+  blob.style.left = `${clientX - blobWidth / 2}px`; // Subtract half the blob width
+  blob.style.top = `${clientY + scrollY - blobHeight / 2}px`; // Subtract half the blob height
 };
 
 window.addEventListener("mousemove", (event) => {
