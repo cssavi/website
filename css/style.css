@@ -2,7 +2,7 @@ body {
   background-color: rgb(0, 0, 0);
   margin: 0px;
   display: grid;
-  height: 100vh; /* Add this line */
+  height: 400vh; /* Add this line */
   overflow: hidden; /* Add this line */
   place-items: center;
   overflow-y: scroll;
@@ -75,7 +75,7 @@ body {
 
 #menu-background-image {
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%), url("images/background.PNG");
-  background-position: center 60%;
+  background-position: center 100%;
   background-size: 130vmax;
   height: 100%;
   left: 0px;  
@@ -295,7 +295,40 @@ body {
 }
 
 .content-container {
-  height: 200vh;
+  height: 400vh;
   overflow-y: scroll;
-  
+}
+
+
+#experiences {
+  position: absolute;
+  top: 200vh; /* Position at the start of third page */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Make the text visible on the black background */
+  text-align: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-content {
+  width: 50%;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-align: justify;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.experience-image {
+  width: 300px;
+  height: auto;
 }

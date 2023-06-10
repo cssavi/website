@@ -64,3 +64,23 @@ window.addEventListener("mousemove", (event) => {
   const { clientX, clientY } = event;
   lastMousePosition = { clientX, clientY };
 });
+
+const experiencesLink = document.querySelector('.menu-item a[href="#experiences"]');
+
+experiencesLink.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const experiencesSection = document.getElementById('experiences');
+
+    experiencesSection.scrollIntoView({ behavior: 'smooth' });
+});
+
+const contactLink = document.querySelector('.menu-item[href="#contact-section"]');
+
+contactLink.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const contactSection = document.getElementById('contact-section');
+
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+});
